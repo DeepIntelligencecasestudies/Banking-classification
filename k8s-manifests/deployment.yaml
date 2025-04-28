@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banking-classification-deployment
+  namespace: banking-classification
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: banking-classification-app
+  template:
+    metadata:
+      labels:
+        app: banking-classification-app
+    spec:
+      containers:
+      - name: banking-classification-container
+        image: 033937118829.dkr.ecr.us-east-1.amazonaws.com/banking-classification-ecr:latest
+        ports:
+        - containerPort: 5000
